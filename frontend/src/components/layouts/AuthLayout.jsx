@@ -5,7 +5,7 @@ const AuthLayout = ({ children }) => {
     return (
         <div className='flex'>
             <div className='w-screen h-screen md:w-[60vw] px-12 pt-8 pb-12'>
-                <h2 className='text-lg font-medium text-black'>Flow Ledger</h2>
+                <h2 className='text-lg font-medium font-Unbounded text-black'>Flow Ledger</h2>
                 {children}
             </div>
 
@@ -13,7 +13,7 @@ const AuthLayout = ({ children }) => {
 
                 <div className='w-48 h-48 rounded-[40px] bg-[#14532D] absolute -top-7 -left-5' />
                 <div className='w-48 h-48 rounded-[40px] border-20 border-[#86EFAC] absolute top-[30%] -right-10' />
-                <div className='w-48 h-48 rounded-[40px] bg-[#22C55E] absolute -bottom-7 -left-5 ' />
+                <div className='w-48 h-48 rounded-[40px] bg-primary absolute -bottom-7 -left-5 ' />
 
                 <div className='grid grid-cols-1 z-20 '>
                     <StatsInfoCard
