@@ -83,13 +83,13 @@ export const downloadIncomeExcel = async (req, res) => {
     const userId = req.user.id;
 
     try {
-        const income = await Income.find({ userId: req.user.id }).sort({ date: -1 });
+        const income = await Income.find({ userId }).sort({ date: -1 });
 
         // Format data for Excel
         const data = income.map((item) => ({
             Source: item.source,
             Amount: item.amount,
-            Date: item.date,
+            Date: item.date.toLocaleDateString(),
         }));
 
         // Create workbook
