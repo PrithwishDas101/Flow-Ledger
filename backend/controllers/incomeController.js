@@ -10,7 +10,7 @@ export const addIncome = async (req, res) => {
         const { icon, source, amount, date } = req.body;
 
         // Validation
-        if (!source || !amount || !date) {
+        if (!source || amount == null) {
             return res
                 .status(400)
                 .json({ message: "All fields are required!" });
@@ -83,13 +83,13 @@ export const downloadIncomeExcel = async (req, res) => {
     const userId = req.user.id;
 
     try {
-        const income = await Income.find({ userId }).sort({ date: -1 });
+        const incomes = await Income.find({ userId }).sort({ date: -1 });
 
         // Format data for Excel
-        const data = income.map((item) => ({
-            Source: item.source,
-            Amount: item.amount,
-            Date: item.date.toLocaleDateString(),
+        const data = incomes.map((income) => ({
+            Source: income.source,
+            Amount: income.amount,
+            Date: income.date.toLocaleDateString(),
         }));
 
         // Create workbook
