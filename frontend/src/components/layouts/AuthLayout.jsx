@@ -19,7 +19,7 @@ const AuthLayout = ({ children }) => {
                     <StatsInfoCard
                         icon={< LuTrendingUpDown />}
                         label="Take control of your finances!"
-                        value="870000"
+                        value={Math.floor(Math.random() * 900000) + 100000}
                         color="bg-primary"
                     />
                 </div>
