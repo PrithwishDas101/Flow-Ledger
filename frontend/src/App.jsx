@@ -13,26 +13,36 @@ import Home from './pages/Dashboard/Home.jsx'
 import Expense from './pages/Dashboard/Expense.jsx'
 import Income from './pages/Dashboard/Income.jsx'
 import UserProvider from './context/userContext.jsx';
+import { useUserAuth } from './context/useUserAuth.jsx';
 
 const App = () => {
   return (
     <UserProvider>
       <div>
         <Router>
-          <Routes>
-            <Route path='/' element={<Root />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signUp' element={<SignUp />} />
-            <Route path='/dashboard' element={<Home />} />
-            <Route path='/income' element={<Income />} />
-            <Route path='/expense' element={<Expense />} />
-          </Routes>
+          <AppRoutes />
         </Router>
       </div>
     </UserProvider>
-
   )
 }
+
+// Separate component to use hooks within UserProvider context
+const AppRoutes = () => {
+  // Fetch user data on app initialization
+  useUserAuth();
+
+  return (
+    <Routes>
+      <Route path='/' element={<Root />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/signUp' element={<SignUp />} />
+      <Route path='/dashboard' element={<Home />} />
+      <Route path='/income' element={<Income />} />
+      <Route path='/expense' element={<Expense />} />
+    </Routes>
+  );
+};
 
 export default App
 
