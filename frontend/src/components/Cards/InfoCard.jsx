@@ -4,7 +4,9 @@ const InfoCard = ({ icon, label, value, color }) => {
     return (
         <div className='flex items-center gap-5 bg-white p-6 rounded-3xl border border-gray-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300'>
 
-            <div className={`size-14 flex items-center justify-center rounded-2xl text-[26px] text-white shadow-lg ${color}`}>
+            <div
+                className={`size-14 flex items-center justify-center rounded-full border border-white/40 text-[26px] text-white shadow-lg shadow-black/10 ${color}`}
+            >
                 {icon}
             </div>
 

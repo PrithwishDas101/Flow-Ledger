@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { LuHandCoins, LuWalletMinimal, LuReceiptText} from "react-icons/lu";
+import { LuHandCoins, LuWalletMinimal, LuReceiptText } from "react-icons/lu";
 
 import { useUserAuth } from "../../context/useUserAuth.jsx"
 import DashboardLayout from "../../components/layouts/DashboardLayout.jsx";
@@ -8,6 +8,8 @@ import axiosInstance from "../../utils/axiosInstance.js";
 import { API_PATHS } from "../../utils/apiPaths.js";
 import { addThousandSeperator } from "../../utils/helper.js"
 import InfoCard from "../../components/Cards/InfoCard.jsx";
+import RecentTransactions from "../../components/Dashboard/RecentTransactions.jsx"
+import FinanceOverview from "../../components/Dashboard/FinanceOverview.jsx"
 
 const Home = () => {
 
@@ -46,7 +48,7 @@ const Home = () => {
   return (
     <DashboardLayout activeMenu="Dashboard">
       <div className='my-5 mx-auto'>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/*<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <InfoCard
             icon={<LuWalletMinimal />}
             label={"Total Balance"}
@@ -67,8 +69,23 @@ const Home = () => {
             value={addThousandSeperator(dashboardData?.totalExpense || 0)}
             color="bg-rose-500"
           />
+        </div>*/}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6" >
+          <RecentTransactions
+            transactions={dashboardData?.recentTransaction}
+            onSeeMore={() => navigate("/expense")}
+          />
+
+          <FinanceOverview
+            totalBalance={dashboardData?.totalBalance || 0}
+            totalIncome={dashboardData?.totalIncome || 0}
+            totalExpense={dashboardData?.totalExpense || 0}
+          />
         </div>
       </div>
+
+
     </DashboardLayout>
   )
 }
