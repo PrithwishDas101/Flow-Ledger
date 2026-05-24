@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <DashboardLayout activeMenu="Dashboard">
       <div className='my-5 mx-auto'>
-        {/*<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <InfoCard
             icon={<LuWalletMinimal />}
             label={"Total Balance"}
@@ -69,7 +69,7 @@ const Home = () => {
             value={addThousandSeperator(dashboardData?.totalExpense || 0)}
             color="bg-rose-500"
           />
-        </div>*/}
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6" >
           <RecentTransactions

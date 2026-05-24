@@ -1,5 +1,6 @@
+import CustomPieChart from "../../components/Charts/CustomPieChart.jsx"
 
-const COLORS = ["#875CF5", "#FA2C37", "FF6900"]
+const COLORS = ["#14B86A", "#F97316", "#EF4444"];
 
 const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
 
@@ -8,16 +9,18 @@ const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
         { name: "Total Income", amount: totalIncome },
         { name: "Total Expense", amount: totalExpense },
     ]
-    return (
+    return ( 
         <div className="card">
             <div className="flex items-center justify-between">
-                <h5 className="text-lg" Finance Overview></h5>
+                <h5 className="text-lg">Finance Overview</h5>
             </div>
 
             <CustomPieChart
                 data={balanceData}
                 label="Total Balance"
                 totalAmount={`$${totalBalance}`}
+                colors={COLORS}
+                showTextAnchor
             />
         </div>
     )

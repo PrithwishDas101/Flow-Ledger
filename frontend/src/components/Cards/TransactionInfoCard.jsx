@@ -21,7 +21,7 @@ const TransactionInfoCard = ({
         <div className="group relative flex items-center gap-4 mt-2 p-3 rounded-lg hover:bg-gray-200">
             <div className="size-12 flex items-center justify-center text-xl text-gray-800 bg-gray-100 rounded-full">
                 {icon ? (
-                    <img src={icon} alt={title} className="size-6" />
+                    <span className="text-2xl">{icon}</span>
                 ) : (
                     <LuUtensils />
                 )}
