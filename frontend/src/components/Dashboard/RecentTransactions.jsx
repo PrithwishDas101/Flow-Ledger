@@ -5,10 +5,10 @@ import TransactionInfoCard from '../Cards/TransactionInfoCard.jsx';
 
 const RecentTransactions = ({ transactions, onSeeMore }) => {
     return (
-        <div className='card mt-6 h-auto'>
+        <div className='card h-auto'>
             
             <div className='flex items-center justify-between'>
-                <h5 className='text-lg font-semibold'>
+                <h5 className='text-lg font-medium'>
                     Recent Transactions
                 </h5>
 
