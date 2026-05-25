@@ -8,8 +8,9 @@ import axiosInstance from "../../utils/axiosInstance.js";
 import { API_PATHS } from "../../utils/apiPaths.js";
 import { addThousandSeperator } from "../../utils/helper.js"
 import InfoCard from "../../components/Cards/InfoCard.jsx";
-import RecentTransactions from "../../components/Dashboard/RecentTransactions.jsx"
-import FinanceOverview from "../../components/Dashboard/FinanceOverview.jsx"
+import RecentTransactions from "../../components/Dashboard/RecentTransactions.jsx";
+import FinanceOverview from "../../components/Dashboard/FinanceOverview.jsx";
+import ExpenseTransaction from "../../components/Dashboard/ExpenseTransaction.jsx";
 
 const Home = () => {
 
@@ -73,7 +74,7 @@ const Home = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6" >
           <RecentTransactions
-            transactions={dashboardData?.recentTransaction}
+            transactions={dashboardData?.recentTransactions}
             onSeeMore={() => navigate("/expense")}
           />
 
@@ -81,6 +82,11 @@ const Home = () => {
             totalBalance={dashboardData?.totalBalance || 0}
             totalIncome={dashboardData?.totalIncome || 0}
             totalExpense={dashboardData?.totalExpense || 0}
+          />
+
+          <ExpenseTransaction
+            transactions={dashboardData?.last30DaysExpense?.transaction || 0}
+            onSeeMore={() =>navigate("/expense")}
           />
         </div>
       </div>
