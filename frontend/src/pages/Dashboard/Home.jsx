@@ -11,6 +11,7 @@ import InfoCard from "../../components/Cards/InfoCard.jsx";
 import RecentTransactions from "../../components/Dashboard/RecentTransactions.jsx";
 import FinanceOverview from "../../components/Dashboard/FinanceOverview.jsx";
 import ExpenseTransaction from "../../components/Dashboard/ExpenseTransaction.jsx";
+import Last30DaysExpense from "../../components/Dashboard/Last30DaysExpense.jsx"
 
 const Home = () => {
 
@@ -85,8 +86,12 @@ const Home = () => {
           />
 
           <ExpenseTransaction
-            transactions={dashboardData?.last30DaysExpense?.transaction || 0}
-            onSeeMore={() =>navigate("/expense")}
+            transactions={dashboardData?.last30DaysExpense?.transaction || []}
+            onSeeMore={() => navigate("/expense")}
+          />
+
+          <Last30DaysExpense
+            data={dashboardData?.last30DaysExpense?.transaction || []}
           />
         </div>
       </div>
