@@ -8,10 +8,12 @@ import { API_PATHS } from "../../utils/apiPaths.js";
 import Modal from '../../components/Modal.jsx';
 import AddIncomeForm from '../../components/income/AddIncomeForm.jsx';
 import IncomeList from '../../components/income/IncomeList.jsx';
-import { data } from 'react-router-dom';
 import DeleteAlert from '../../components/DeleteAlert.jsx';
+import { useUserAuth } from "../../context/useUserAuth.jsx"
 
 const Income = () => {
+
+  useUserAuth();
 
   const [incomeData, setIncomeData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -130,7 +132,7 @@ const Income = () => {
     <DashboardLayout activeMenu="Income">
       <div className='my-5 mx-auto'>
         <div className='grid grid-cols-1 gap-6'>
-          <div className=''>
+          <div className='space-y-6'>
             <IncomeOverview
               transactions={incomeData}
               onAddIncome={() => setOpenAddIncomeModal(true)}
