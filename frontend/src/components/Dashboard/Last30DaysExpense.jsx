@@ -21,7 +21,10 @@ const Last30DaysExpense = ({ data }) => {
         </h5>
       </div>
 
-      <CustomBarChart data={chartData} />
+      <CustomBarChart
+        data={chartData}
+        xAxisKey="category"
+      />
     </div>
   )
 }

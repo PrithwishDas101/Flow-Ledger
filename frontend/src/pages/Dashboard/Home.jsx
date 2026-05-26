@@ -97,7 +97,7 @@ const Home = () => {
           />
 
           <RecentIncomeWithChart
-            data={dashboardData?.last60DaysIncome?.transaction?.slice(0, 4) || []}
+            data={dashboardData?.last60DaysIncome?.transaction?.slice(-5) || []}
             totalIncome={dashboardData?.totalIncome || 0}
           />
 

@@ -16,16 +16,23 @@ const IncomeOverview = ({ transactions, onAddIncome }) => {
 
     return (
         <div className="card mt-6">
-            <div className="">
+            <div className="flex items-center justify-between">
                 <div className="">
-                    <h5 className="">Income Overview</h5>
-                    <p className="">Track your income and analyze your income over time</p>
+                    <h5 className="text-lg font-medium">Income Overview</h5>
+                    <p className="text-xs text-slate-400 mt-0.5">Track your income and analyze your income over time</p>
                 </div>
 
-                <button className="" onClick={onAddIncome}>
-                    <LuPlus className="" />
+                <button className="add-btn" onClick={onAddIncome}>
+                    <LuPlus className="text-lg" />
                     Add Income
                 </button>
+            </div>
+
+            <div className="mt-10">
+                <CustomBarChart
+                    data={chartData}
+                    xAxisKey="month"
+                />
             </div>
         </div>
     )

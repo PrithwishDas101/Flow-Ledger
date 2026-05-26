@@ -10,7 +10,7 @@ import {
     Cell
 } from "recharts";
 
-const CustomBarChart = ({ data }) => {
+const CustomBarChart = ({ data, xAxisKey }) => {
 
     // Function to alternative color
     const getBarColor = (index) => {
@@ -21,7 +21,7 @@ const CustomBarChart = ({ data }) => {
         if (active && payload && payload.length) {
             return (
                 <div className="bg-white shadow-md rounded-lg p-2 border border-gray-200">
-                    <p className="text-xs font-semibold text-emerald-800 mb-1" >{payload[0].payload.category}</p>
+                    <p className="text-xs font-semibold text-emerald-800 mb-1" >{payload[0].payload[xAxisKey]}</p>
                     <p className="text-sm text-gray-700">
                         Amount: <span className="text-sm font-medium text-gray-900">${payload[0].payload.amount}</span>
                     </p>
@@ -38,7 +38,7 @@ const CustomBarChart = ({ data }) => {
                     <CartesianGrid stroke="none" />
 
                     <XAxis
-                        dataKey="category"
+                        dataKey={xAxisKey}
                         tick={{ fontSize: 12, fill: "#555" }}
                         stroke="none"
                     />
