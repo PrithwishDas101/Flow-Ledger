@@ -7,7 +7,7 @@ const EmojiPickerPopup = ({ icon, onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleEmojiSelect = (emojiData) => {
-        onSelect(emojiData?.imageUrl || "");
+        onSelect(emojiData?.emoji || "");
         setIsOpen(false);
     };
 
@@ -21,11 +21,9 @@ const EmojiPickerPopup = ({ icon, onSelect }) => {
                 <div className="w-12 h-12 flex items-center justify-center text-2xl bg-emerald-50 text-primary rounded-xl overflow-hidden">
 
                     {icon ? (
-                        <img
-                            src={icon}
-                            alt="Icon"
-                            className="w-12 h-12 object-contain"
-                        />
+                        <span className="text-3xl">
+                            {icon}
+                        </span>
                     ) : (
                         <LuImage className="text-2xl text-primary" />
                     )}

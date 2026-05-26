@@ -68,14 +68,10 @@ export const getDashboardData = async (req, res) => {
         );
 
         // Fetch recent income transactions
-        const recentIncome = await Income.find({ userId })
-            .sort({ date: -1 })
-            .limit(5);
+        const recentIncome = await Income.find({ userId });
 
         // Fetch recent expense transactions
-        const recentExpenses = await Expense.find({ userId })
-            .sort({ date: -1 })
-            .limit(5);
+        const recentExpenses = await Expense.find({ userId });
 
         // Merge and sort transactions
         const lastTransactions = [
@@ -88,7 +84,9 @@ export const getDashboardData = async (req, res) => {
                 ...txn.toObject(),
                 type: "expense",
             })),
-        ].sort((a, b) => new Date(b.date) - new Date(a.date));
+        ]
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 5);
 
         // Final response
         res.status(200).json({

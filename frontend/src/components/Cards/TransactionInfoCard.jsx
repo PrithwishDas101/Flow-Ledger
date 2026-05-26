@@ -11,7 +11,8 @@ const TransactionInfoCard = ({
     date,
     amount,
     type,
-    hideDeleteBtn
+    hideDeleteBtn,
+    onDelete
 }) => {
 
     const getAmountStyles = () =>
@@ -36,7 +37,8 @@ const TransactionInfoCard = ({
 
             <div className="flex items-center gap-2">
                 {!hideDeleteBtn && (
-                    <button className="text-gray-500 hover:bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                    <button
+                        className="text-gray-500 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer"
                         onClick={onDelete}
                     >
                         <LuTrash2 size={18} />
