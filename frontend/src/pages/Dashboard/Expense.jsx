@@ -5,7 +5,10 @@ import DashboardLayout from "../../components/layouts/DashboardLayout.jsx";
 import { useUserAuth } from '../../context/useUserAuth.jsx';
 import axiosInstance from "../../utils/axiosInstance.js";
 import { API_PATHS } from "../../utils/apiPaths.js";
-import ExpenseOverview from "../../components/expense/ExpenseOverview.jsx"
+import ExpenseOverview from "../../components/expense/ExpenseOverview.jsx";
+import Modal from '../../components/Modal.jsx';
+import AddExpenseForm from "../../components/expense/AddExpenseForm.jsx";
+import ExpenseList from "../../components/expense/ExpenseList.jsx"
 
 const Expense = () => {
   useUserAuth();
@@ -104,8 +107,24 @@ const Expense = () => {
               transactions={expenseData}
               onExpenseIncome={() => setOpenAddExpenseModal(true)}
             />
+
+            <ExpenseList
+              transactions={expenseData}
+              onDelete={(id) => {
+                setOpenDeleteAlert({ show: true, data: id })
+              }}
+              onDownload={handleDownloadExpenseDetails}
+            />
           </div>
         </div>
+
+        <Modal
+          isOpen={openAddExpenseModal}
+          onClose={() => setOpenAddExpenseModal(false)}
+          title="Add Expense"
+        >
+          <AddExpenseForm onAddExpense={handleAddExpense} />
+        </Modal>
       </div>
     </DashboardLayout>
   )
