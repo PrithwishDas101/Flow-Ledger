@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import path from "path";
-import { fileURLToPath } from "url";
 
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
@@ -15,21 +14,22 @@ dotenv.config({
 });
 
 const app = express();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.resolve();
 
 // Middleware
-app.use(
-    cors({
-        origin: process.env.CLIENT_URL || "*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+if (process.env.NODE_ENV !== "production") {
+    app.use(
+        cors({
+            origin: process.env.CLIENT_URL || "*",
+            methods: ["GET", "POST", "PUT", "DELETE"],
+            allowedHeaders: ["Content-Type", "Authorization"],
+        })
+    );
+}
 
 app.use(express.json());
 
+// API Routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/income", incomeRoutes);
 app.use("/api/v1/expense", expenseRoutes);
@@ -37,6 +37,17 @@ app.use("/api/v1/dashboard", dashboardRoutes);
 
 // Serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Serve frontend in production
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+    app.use((req, res) => {
+        res.sendFile(
+            path.join(__dirname, "../frontend", "dist", "index.html")
+        );
+    });
+}
 
 const PORT = process.env.PORT || 5000;
 
