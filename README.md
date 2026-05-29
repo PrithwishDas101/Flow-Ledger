@@ -252,16 +252,13 @@ GET    /api/v1/expense/download-excel
 # Screenshots
 
 ## Dashboard
-
-<img width="100%" alt="Dashboard Screenshot" src="https://via.placeholder.com/1200x650.png?text=Flow+Ledger+Dashboard" />
+<img width="1895" height="907" alt="image" src="https://github.com/user-attachments/assets/8410e700-dd97-4d46-a4b4-5845b4c61781" />
 
 ## Expense Tracking
-
-<img width="100%" alt="Expense Tracking Screenshot" src="https://via.placeholder.com/1200x650.png?text=Expense+Tracking" />
+<img width="1900" height="898" alt="image" src="https://github.com/user-attachments/assets/b3f7907f-cbd4-403c-bdb1-92fb6258f2eb" />
 
 ## Analytics
-
-<img width="100%" alt="Analytics Screenshot" src="https://via.placeholder.com/1200x650.png?text=Financial+Analytics" />
+<img width="1877" height="871" alt="image" src="https://github.com/user-attachments/assets/c1bc6bb4-3038-4f6f-ae2c-d3117fb39894" />
 
 ---
 
