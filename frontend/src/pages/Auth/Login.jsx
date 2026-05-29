@@ -6,7 +6,7 @@ import axiosInstance from "../../utils/axiosInstance.js";
 import { API_PATHS } from "../../utils/apiPaths.js";
 import AuthLayout from '../../components/layouts/AuthLayout.jsx';
 import Input from '../../components/inputs/Input.jsx';
-import { UserContext } from '../../context/userContext.jsx';
+import { UserContext } from '../../context/UserContext.jsx';
 
 const Login = () => {
 
