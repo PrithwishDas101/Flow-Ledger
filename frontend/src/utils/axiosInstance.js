@@ -30,17 +30,25 @@ axiosInstance.interceptors.response.use(
         return response;
     },
     (error) => {
-        // handle common errors
         if (error.response) {
-            if (error.response.status === 401) {
-                // Redirect to login page
-                window.location.href = '/login'
+            if (error.response?.status === 401) {
+
+                const token = localStorage.getItem("token");
+
+                if (token) {
+                    localStorage.removeItem("token");
+
+                    if (window.location.pathname !== "/login") {
+                        window.location.href = "/login";
+                    }
+                }
             } else if (error.response.status === 500) {
-                console.log("Server is down! Please try again later.")
+                console.log("Server is down! Please try again later.");
             }
         } else if (error.code === "ECONNABORTED") {
             console.error("Request timeout! Please try again.");
         }
+
         return Promise.reject(error);
     }
 );

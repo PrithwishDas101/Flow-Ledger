@@ -28,9 +28,14 @@ export const useUserAuth = () => {
                 }
             } catch (err) {
                 console.error("Failed to fetch user info:", err);
+
                 if (isMounted) {
+                    localStorage.removeItem("token");
                     clearUser();
-                    navigate("/login");
+
+                    if (window.location.pathname !== "/login") {
+                        navigate("/login");
+                    }
                 }
             }
         };
