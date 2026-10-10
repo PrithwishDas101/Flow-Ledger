@@ -1,51 +1,53 @@
 import { LuTrendingUpDown } from "react-icons/lu";
-import CARD_2 from '../../assets/images/card2.png'
+import CARD_2 from '../../assets/images/card2.png';
+import ThemeToggle from './ThemeToggle.jsx';
 
 const AuthLayout = ({ children }) => {
     return (
-        <div className='flex'>
-            <div className='w-screen h-screen md:w-[60vw] px-12 pt-8 pb-12'>
-                <h2 className='text-lg font-medium font-Unbounded text-black'>Flow Ledger</h2>
-                {children}
+        <div className="auth-shell flex min-h-screen">
+            <div className="auth-main relative flex min-h-screen w-screen flex-col px-6 pb-10 pt-6 sm:px-10 md:w-[60vw] md:px-12 md:pt-8">
+                <div className="flex items-center justify-between gap-4">
+                    <h2 className="text-lg font-semibold tracking-tight font-Unbounded">Flow Ledger</h2>
+                    <ThemeToggle />
+                </div>
+                <div className="flex flex-1 flex-col">
+                    {children}
+                </div>
             </div>
 
-            <div className='hidden md:block w-[40vw] h-screen bg-[#ECFDF3] bg-auth-bg-img bg-cover bg-no-repeat bg-center overflow-hidden p-8 relative'>
+            <aside className="auth-visual relative hidden min-h-screen w-[40vw] overflow-hidden p-8 md:block">
+                <div className="auth-shape auth-shape--one absolute -left-5 -top-7 h-48 w-48 rounded-[2.5rem]" />
+                <div className="auth-shape auth-shape--two absolute -right-10 top-[30%] h-48 w-48 rounded-[2.5rem] border-[20px]" />
+                <div className="auth-shape auth-shape--three absolute -bottom-7 -left-5 h-48 w-48 rounded-[2.5rem]" />
 
-                <div className='w-48 h-48 rounded-[40px] bg-[#14532D] absolute -top-7 -left-5' />
-                <div className='w-48 h-48 rounded-[40px] border-20 border-[#86EFAC] absolute top-[30%] -right-10' />
-                <div className='w-48 h-48 rounded-[40px] bg-primary absolute -bottom-7 -left-5 ' />
-
-                <div className='grid grid-cols-1 z-20 '>
+                <div className="relative z-10 grid grid-cols-1">
                     <StatsInfoCard
-                        icon={< LuTrendingUpDown />}
-                        label="Take control of your finances!"
-                        value={Math.floor(Math.random() * 900000) + 100000}
-                        color="bg-primary"
+                        icon={<LuTrendingUpDown />}
+                        label="A clearer view of your finances."
+                        value="Your next step starts here"
                     />
                 </div>
 
                 <img
                     src={CARD_2}
-                    alt="dashboard"
-                    className='w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-cyan-400/15' />
-            </div>
+                    alt="Flow Ledger dashboard preview"
+                    className="auth-preview absolute bottom-10 z-10 w-64 rounded-2xl shadow-2xl lg:w-[90%]"
+                />
+            </aside>
         </div>
-    )
-}
+    );
+};
 
 export default AuthLayout;
 
-const StatsInfoCard = ({ icon, label, value, color }) => {
-    return (
-        <div className='flex gap-6 bg-white p-4 rounded-xl shadow-md shadow-emerald-400/10 border border-gray-300/50 z-10'>
-            <div className={`w-12 h-12 flex items-center justify-center text-[26px] text-white ${color} rounded-full drop-shadow-xl`}>
-                {icon}
-            </div>
-
-            <div>
-                <h6 className="text-xs text-gray-500 mb-1">{label}</h6>
-                <span className="text-[20px] ">${value}</span>
-            </div>
+const StatsInfoCard = ({ icon, label, value }) => (
+    <div className="auth-stat-card relative z-10 flex gap-4 rounded-2xl p-5">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-2xl text-white shadow-lg">
+            {icon}
         </div>
-    )
-}
+        <div>
+            <h6 className="app-muted mb-1 text-xs">{label}</h6>
+            <span className="text-lg font-semibold">{value}</span>
+        </div>
+    </div>
+);
