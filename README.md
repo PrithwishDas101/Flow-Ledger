@@ -1,322 +1,86 @@
 # Flow Ledger
 
-<div align="center">
+A modern personal-finance tracker for recording income and expenses, reviewing spending habits, and exploring financial summaries through a clean, fintech-inspired interface.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-v18+-green)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-v18+-blue)](https://react.dev/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen)](https://www.mongodb.com/cloud/atlas)
-[![Vite](https://img.shields.io/badge/Vite-v5+-purple)](https://vitejs.dev/)
-[![Status](https://img.shields.io/badge/Status-Active-success)](https://github.com)
+[Live demo](https://flow-ledger.onrender.com)
 
-### Modern Personal Finance Tracking Platform
+## Features
 
-Track income, monitor expenses, visualize financial habits, and manage your money with a clean fintech-inspired experience.
+- Record and manage income and expense entries
+- Review transaction history and financial summaries
+- Visualize financial activity with dashboard charts
+- Manage account/profile information and profile-picture uploads
+- Export financial reports to Excel
+- Responsive React interface
+- Light and dark themes with a persistent theme toggle
+- Focused form, navigation, chart, and card styling across themes
 
-[Live Demo](https://flow-ledger.onrender.com) • [Features](#features) • [Tech Stack](#tech-stack) • [Setup](#installation--setup)
+Availability of account, persistence, upload, and reporting features depends on the configured backend and external services.
 
-</div>
+## Tech stack
 
----
+**Frontend**
+- React 18
+- Vite
+- React Router
+- Tailwind CSS / project styling
+- Charting library for financial visualizations
 
-## Overview
+**Backend**
+- Node.js and Express
+- MongoDB and Mongoose
+- Authentication and profile management
+- File upload support
 
-Flow Ledger is a full-stack MERN finance tracker built with a modern SaaS-inspired UI and production-ready architecture.
+## Repository layout
 
-The application allows users to securely manage expenses and income, upload profile pictures, visualize financial analytics through interactive charts, and export reports directly to Excel.
-
-Flow Ledger started as a personal project to learn production-grade MERN deployment, authentication systems, and modern fintech UI architecture.
-
----
-
-## Live Demo
-
-### 🌐 https://flow-ledger.onrender.com
-
----
-
-# Features
-
-## Financial Management
-
-* Add and manage income sources
-* Track expenses with categories
-* View transaction history
-* Delete and organize financial records
-* Download reports as Excel files
-
-## Dashboard Analytics
-
-* Interactive charts and graphs
-* Expense breakdown visualization
-* Income distribution overview
-* Recent transaction summaries
-* Financial insights dashboard
-
-## Authentication & Security
-
-* JWT-based authentication
-* Protected API routes
-* Password hashing with bcryptjs
-* Persistent login sessions
-* Secure user-specific financial data
-
-## User Experience
-
-* Responsive design for desktop and mobile
-* Clean modern fintech aesthetic
-* Fast navigation with React Router
-* Toast notifications and smooth interactions
-* Profile image upload support
-
----
-
-# Tech Stack
-
-## Frontend
-
-* React
-* Vite
-* Tailwind CSS
-* React Router DOM
-* Axios
-* Recharts
-* React Hot Toast
-
-## Backend
-
-* Node.js
-* Express.js
-* JWT Authentication
-* Multer
-* bcryptjs
-* CORS
-
-## Database
-
-* MongoDB Atlas
-* Mongoose ODM
-
-## Deployment
-
-* Render
-
----
-
-# Project Structure
-
-```bash
+```text
 Flow-Ledger/
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── context/
-│   │   ├── utils/
-│   │   └── assets/
-│   │
-│   ├── public/
-│   └── package.json
-│
-├── backend/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── uploads/
-│   ├── config/
-│   └── server.js
-│
-├── package.json
-└── README.md
+├── frontend/   # React + Vite user interface
+├── backend/    # Express API and data models
+└── package.json
 ```
 
----
+## Getting started
 
-# Installation & Setup
-
-## Clone Repository
+Requirements: Node.js, npm, and a MongoDB database.
 
 ```bash
 git clone https://github.com/PrithwishDas101/Flow-Ledger.git
-
 cd Flow-Ledger
+npm install
 ```
 
----
-
-## Backend Setup
+The root scripts install nested dependencies and build the frontend. For local development, install and run each application from its own directory:
 
 ```bash
 cd backend
 npm install
+npm run dev
 ```
 
-Create a `.env` file inside `backend/`
-
-```env
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_super_secret_key
-
-PORT=8000
-```
-
----
-
-## Frontend Setup
+In another terminal:
 
 ```bash
 cd frontend
 npm install
-```
-
-Create a `.env` file inside `frontend/`
-
-```env
-VITE_API_URL=http://localhost:8000
-```
-
----
-
-# Run Locally
-
-## Start Backend
-
-```bash
-cd backend
 npm run dev
 ```
 
-## Start Frontend
+Confirm the available scripts in each nested `package.json` and set the frontend API base URL to the local backend.
 
-```bash
-cd frontend
-npm run dev
-```
+## Environment variables
 
-Frontend runs on:
+Configure the backend's MongoDB connection, authentication settings, port, and any upload-provider credentials used by the code. Configure the frontend with the API URL and any public configuration it requires. Use the exact variable names referenced in the project's configuration files; never commit secrets.
 
-```bash
-http://localhost:5173
-```
+## Theme and accessibility
 
----
+The interface includes a persistent light/dark theme preference and consistent theme tokens for navigation, cards, forms, and charts. When changing components, ensure text, focus indicators, and interactive states remain legible in both themes.
 
-# Production Build
+## Deployment
 
-```bash
-npm run build
-```
+The live demo is hosted at [flow-ledger.onrender.com](https://flow-ledger.onrender.com). For self-hosting, deploy the frontend and API with matching environment settings, allow the frontend origin in CORS, and provision the database and any upload service before enabling production traffic.
 
 ---
 
-# API Endpoints Overview
-
-## Authentication
-
-```http
-POST /api/v1/auth/register
-POST /api/v1/auth/login
-GET  /api/v1/auth/getUser
-POST /api/v1/auth/upload-image
-```
-
-## Dashboard
-
-```http
-GET /api/v1/dashboard
-```
-
-## Income
-
-```http
-POST   /api/v1/income/add
-GET    /api/v1/income/
-DELETE /api/v1/income/:id
-GET    /api/v1/income/download-excel
-```
-
-## Expense
-
-```http
-POST   /api/v1/expense/add
-GET    /api/v1/expense/
-DELETE /api/v1/expense/:id
-GET    /api/v1/expense/download-excel
-```
-
----
-
-# Screenshots
-
-## Dashboard
-<img width="1895" height="907" alt="image" src="https://github.com/user-attachments/assets/8410e700-dd97-4d46-a4b4-5845b4c61781" />
-
-## Expense Tracking
-<img width="1900" height="898" alt="image" src="https://github.com/user-attachments/assets/b3f7907f-cbd4-403c-bdb1-92fb6258f2eb" />
-
-## Analytics
-<img width="1877" height="871" alt="image" src="https://github.com/user-attachments/assets/c1bc6bb4-3038-4f6f-ae2c-d3117fb39894" />
-
----
-
-# Deployment
-
-Flow Ledger is deployed as a full-stack application on Render.
-
-## Production Setup
-
-* Frontend built using Vite
-* Express serves frontend static files
-* MongoDB Atlas for cloud database
-* Environment variables configured securely on Render
-
----
-
-# Environment Variables
-
-## Backend
-
-```env
-MONGO_URI=
-JWT_SECRET=
-PORT=
-```
-
-## Frontend
-
-```env
-VITE_API_URL=
-```
-
----
-
-# Future Improvements
-
-* Budget planning system
-* Recurring transactions
-* AI-powered spending insights
-* Dark mode support
-* Advanced filtering & search
-* Multi-currency support
-* Monthly PDF reports
-* Cloud image storage integration
-* PWA/mobile app version
-
----
-
-# Author
-
-## Prithwish Das
-
-* GitHub: https://github.com/PrithwishDas101
-
----
-
-# License
-
-This project is licensed under the MIT License.
-
----
+Built by [Prithwish Das](https://github.com/PrithwishDas101).
